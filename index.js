@@ -1,20 +1,17 @@
 
-console.log('===================');
-console.log('__dirname', __dirname);
-console.log('process.cwd()', process.cwd());
-console.log('process.execPath', process.execPath);
-console.log('===================');
 
 var RPCServer = require('./lib/rpc')
 var StratumClient = require('./lib/stratum');
 
+var path = require('path');
 var fs = require('fs');
 var ini = require('ini');
-var config = ini.parse(fs.readFileSync('./config.ini', 'utf-8'));
 
-var path = require('path');
+var iniFile = path.join(process.cwd(), 'config.ini');
+var config = ini.parse(fs.readFileSync(iniFile, 'utf-8'));
+
 var logger = require('./lib/log');
-logger.init(path.resolve(__dirname), 'log.txt');
+logger.init(process.cwd(), 'log.txt');
 
 logger.LogB('======== starting stratum proxy ========');
 var rpcServer = null;
