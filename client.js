@@ -2,13 +2,15 @@
 var jayson = require('jayson');
 
 
-// create a client
+// create an rpc client
 var client = jayson.client.http({
 	host: 'localhost',
-	port: 8500 
+	port: 8586 
 });
 
 console.log(' ');
+
+// make some rpc requests
 
 client.request('getChallengeNumber', [], function(err, response) {
 	if(err) throw err;

@@ -1,7 +1,5 @@
 
 
-cd ..
+pkg --out-path %~dp0 %~dp0\..\index.js
 
-pkg --out-path ./release index.js
 
-cd %~dp0

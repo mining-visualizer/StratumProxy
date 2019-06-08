@@ -8,6 +8,12 @@ var fs = require('fs');
 var ini = require('ini');
 
 var iniFile = path.join(process.cwd(), 'config.ini');
+
+if (!fs.existsSync(iniFile)) {
+	console.log('Error : unable to locate ', iniFile);
+	process.exit();
+}
+
 var config = ini.parse(fs.readFileSync(iniFile, 'utf-8'));
 
 var logger = require('./lib/log');
