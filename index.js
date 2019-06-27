@@ -1,5 +1,12 @@
 
 
+global.logger = logger = require('./lib/log');
+logger.init(process.cwd(), 'log.txt');
+
+var LogS = logger.LogS;
+var LogD = logger.LogD;
+var LogB = logger.LogB;
+
 var RPCServer = require('./lib/rpc')
 var StratumClient = require('./lib/stratum');
 
@@ -16,20 +23,18 @@ if (!fs.existsSync(iniFile)) {
 
 var config = ini.parse(fs.readFileSync(iniFile, 'utf-8'));
 
-var logger = require('./lib/log');
-logger.init(process.cwd(), 'log.txt');
 
-logger.LogB('======== starting stratum proxy ========');
+LogB('======== starting stratum proxy ========');
 var rpcServer = null;
 
 init();
 
 async function init() {
 
-   var stratumClient = new StratumClient(config, logger);
+   var stratumClient = new StratumClient(config);
 
    if (!rpcServer) {
-		rpcServer = new RPCServer(config, logger);
+		rpcServer = new RPCServer(config);
    }
 
    // wait for shares from the miner and send them up to the pool
@@ -41,7 +46,7 @@ async function init() {
 	// if we get disconnected from the pool, try to reconnect
    stratumClient.on('disconnect', function() {
    	rpcServer.removeAllListeners('submitShare');
-      logger.LogB('Connection closed. Reconnecting in 5 seconds ...');
+      LogB('Connection closed. Reconnecting in 5 seconds ...');
       setTimeout(init, 5000);
 
    }).on('workPackage', function(params) {
