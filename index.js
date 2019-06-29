@@ -37,10 +37,11 @@ async function init() {
 		rpcServer = new RPCServer(config);
    }
 
-   // wait for shares from the miner and send them up to the pool
+   // wait for shares from the miner and send them up to the pool. use the 
+   // callback to notify the miner if share was accepted.
 	rpcServer.on('submitShare', async function(args, callback) {
 		var res = await stratumClient.submitShare(args);
-		callback(null, res);
+		callback(res);
 	});
 
 	// if we get disconnected from the pool, try to reconnect
