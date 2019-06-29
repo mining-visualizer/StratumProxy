@@ -2,3 +2,5 @@ node_modules/
 log.txt
 release/*
 !release/build.bat
+test/*
+package-lock.json

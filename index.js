@@ -1,5 +1,7 @@
 
 
+const VERSION = '1.0.0';
+
 global.logger = logger = require('./lib/log');
 logger.init(process.cwd(), 'log.txt');
 
@@ -13,6 +15,11 @@ var StratumClient = require('./lib/stratum');
 var path = require('path');
 var fs = require('fs');
 var ini = require('ini');
+
+if (process.argv[2] == '-v' || process.argv[2] == '--version') {
+   console.log(VERSION);
+   process.exit();
+}
 
 var iniFile = path.join(process.cwd(), 'config.ini');
 
