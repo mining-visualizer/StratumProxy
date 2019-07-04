@@ -1,6 +1,6 @@
 ## MVIS Stratum Proxy ##
 
-If you want to mine at [MVIS Token Pool](http://mvis.ca) using the Stratum protocol, but your mining software does not support this protocol, you can use this proxy program to bridge the gap.  See the FAQ page at http://mvis.ca/faq.html for general information regarding the Stratum protocol.
+If you want to mine at [MVIS Mining Pool](http://mvis.ca) using the Stratum protocol, but your mining software does not support this protocol, you can use this proxy program to bridge the gap.  See the FAQ page at http://mvis.ca/faq.html for general information regarding the Stratum protocol.
 
 
 ### Instuctions
