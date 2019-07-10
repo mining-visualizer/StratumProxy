@@ -15,6 +15,7 @@ var StratumClient = require('./lib/stratum');
 var path = require('path');
 var fs = require('fs');
 var ini = require('ini');
+var web3utils =  require('web3-utils');
 
 if (process.argv[2] == '-v' || process.argv[2] == '--version') {
    console.log(VERSION);
@@ -30,6 +31,10 @@ if (!fs.existsSync(iniFile)) {
 
 var config = ini.parse(fs.readFileSync(iniFile, 'utf-8'));
 
+if (!web3utils.isAddress(config.Miner.EthAddress)) {
+   console.log('\nError: invalid ETH address. Please set a valid ETH address in config.ini\n');
+   process.exit();
+}
 
 LogB('======== starting stratum proxy ========');
 var rpcServer = null;
