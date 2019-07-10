@@ -1,6 +1,8 @@
 node_modules/
 log.txt
+config.ini
 release/*
 !release/build.bat
+!release/config.ini
 test/*
 package-lock.json
