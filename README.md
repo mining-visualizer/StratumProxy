@@ -5,7 +5,7 @@ If you want to mine at [MVIS Mining Pool](http://mvis.ca) using the Stratum prot
 
 ### Instuctions
 1. For Windows users, download the zip package from the [Releases](https://github.com/mining-visualizer/StratumProxy/releases) page.  If you are on Linux, you will have to run from source. (see below).
-2. Unzip the package and open up `config.ini` in your preferred text editor.  The only thing you need to change is the `EthAddress` setting.  This is the ETH address you will receive payouts to from the pool.  This address needs to match the address set in your mining software.
+2. Unzip the package and open up `config.ini` in your preferred text editor.  The only thing you need to change is the `EthAddress` setting.  This is the ETH address you will receive payouts to from the pool.  This address needs to match the ETH address set in your mining software.
 3. Run the program.  You can simply double-click on the .exe and it will open up in a console window, however it is preferable to open a command prompt first, 'cd' into the correct directory, and then run it from there by typing `stratumproxy.exe`, the reason being, if the program crashes this will allow you to see the error message that caused the crash.
 
 
@@ -13,7 +13,7 @@ If you want to mine at [MVIS Mining Pool](http://mvis.ca) using the Stratum prot
 
 If you have multiple mining rigs, you can either run a separate instance of the proxy program on each mining rig, each one configured with a separate ETH address, or you can point all miners to the same proxy via your local area network. In this case all miners need to be configured with the same ETH address, which needs to match the `EthAddress` setting in `config.ini`.  
 
-Keep in mind if you do it this way, the mining pool will see all miners as one large-hashrate miner, and assign a difficulty according to the cumulative hash rate.
+Keep in mind if you do it this way, the mining pool will see all miners as one high-hashrate miner, and assign a difficulty according to the cumulative hash rate.
 
 ### Run From Source
 
