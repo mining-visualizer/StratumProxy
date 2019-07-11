@@ -37,7 +37,11 @@ if (!web3utils.isAddress(config.Miner.EthAddress)) {
 }
 
 LogB('======== starting stratum proxy ========');
+LogB('ETH address: ', config.Miner.EthAddress);
+
 var rpcServer = null;
+var shareCount = 1;
+var rejected = 0;
 
 init();
 
@@ -54,6 +58,8 @@ async function init() {
    rpcServer.on('submitShare', async function(args, callback) {
       var res = await stratumClient.submitShare(args);
       callback(res);
+      rejected = res ? rejected : rejected + 1;
+      process.stdout.write('Total shares: ' + shareCount++ + ',  Rejected: ' + rejected + "\r");
    });
 
    // if we get disconnected from the pool, try to reconnect
