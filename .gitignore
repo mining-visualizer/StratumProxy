@@ -6,3 +6,9 @@ release/*
 !release/config.ini
 test/*
 package-lock.json
+gui/misc/*
+
+# C# project
+[Oo]bj
+[Bb]in
+.vs/
