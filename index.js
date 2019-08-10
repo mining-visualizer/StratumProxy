@@ -22,7 +22,8 @@ if (process.argv[2] == '-v' || process.argv[2] == '--version') {
    process.exit();
 }
 
-var iniFile = path.join(process.cwd(), 'config.ini');
+var iniPath = inPackage() ? path.dirname(process.execPath) : __dirname;
+var iniFile = path.join(iniPath, 'config.ini');
 
 if (!fs.existsSync(iniFile)) {
    console.log('Error : unable to locate ', iniFile);
@@ -73,4 +74,9 @@ async function init() {
       rpcServer.setWork(params);
    });
 
+}
+
+function inPackage() {
+   // are we running in a packaged node environment, ie. npm pkg
+   return process.pkg !== undefined;
 }
