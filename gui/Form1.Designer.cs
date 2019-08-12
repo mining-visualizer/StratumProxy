@@ -33,8 +33,12 @@
          this.mnuExit = new System.Windows.Forms.ToolStripMenuItem();
          this.txtEthAddress = new System.Windows.Forms.TextBox();
          this.label1 = new System.Windows.Forms.Label();
-         this.checkBox1 = new System.Windows.Forms.CheckBox();
+         this.chkCloseToTray = new System.Windows.Forms.CheckBox();
          this.label2 = new System.Windows.Forms.Label();
+         this.timerAddress = new System.Windows.Forms.Timer(this.components);
+         this.lblAddressValid = new System.Windows.Forms.Label();
+         this.txtLog = new System.Windows.Forms.TextBox();
+         this.button1 = new System.Windows.Forms.Button();
          this.mnuTray.SuspendLayout();
          this.SuspendLayout();
          // 
@@ -97,31 +101,66 @@
          this.label1.TabIndex = 2;
          this.label1.Text = "ETH Address";
          // 
-         // checkBox1
+         // chkCloseToTray
          // 
-         this.checkBox1.AutoSize = true;
-         this.checkBox1.Location = new System.Drawing.Point(103, 83);
-         this.checkBox1.Name = "checkBox1";
-         this.checkBox1.Size = new System.Drawing.Size(15, 14);
-         this.checkBox1.TabIndex = 3;
-         this.checkBox1.UseVisualStyleBackColor = true;
+         this.chkCloseToTray.AutoSize = true;
+         this.chkCloseToTray.Location = new System.Drawing.Point(103, 104);
+         this.chkCloseToTray.Name = "chkCloseToTray";
+         this.chkCloseToTray.Size = new System.Drawing.Size(15, 14);
+         this.chkCloseToTray.TabIndex = 3;
+         this.chkCloseToTray.UseVisualStyleBackColor = true;
          // 
          // label2
          // 
          this.label2.AutoSize = true;
-         this.label2.Location = new System.Drawing.Point(26, 84);
+         this.label2.Location = new System.Drawing.Point(26, 105);
          this.label2.Name = "label2";
          this.label2.Size = new System.Drawing.Size(65, 13);
          this.label2.TabIndex = 4;
          this.label2.Text = "Close to tray";
          // 
+         // timerAddress
+         // 
+         this.timerAddress.Interval = 1100;
+         this.timerAddress.Tick += new System.EventHandler(this.timerAddress_Tick);
+         // 
+         // lblAddressValid
+         // 
+         this.lblAddressValid.Location = new System.Drawing.Point(143, 76);
+         this.lblAddressValid.Name = "lblAddressValid";
+         this.lblAddressValid.Size = new System.Drawing.Size(155, 13);
+         this.lblAddressValid.TabIndex = 5;
+         this.lblAddressValid.Text = "Address valid";
+         // 
+         // txtLog
+         // 
+         this.txtLog.Location = new System.Drawing.Point(29, 223);
+         this.txtLog.Multiline = true;
+         this.txtLog.Name = "txtLog";
+         this.txtLog.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+         this.txtLog.Size = new System.Drawing.Size(672, 168);
+         this.txtLog.TabIndex = 6;
+         // 
+         // button1
+         // 
+         this.button1.Location = new System.Drawing.Point(595, 34);
+         this.button1.Name = "button1";
+         this.button1.Size = new System.Drawing.Size(75, 23);
+         this.button1.TabIndex = 7;
+         this.button1.Text = "button1";
+         this.button1.UseVisualStyleBackColor = true;
+         this.button1.Click += new System.EventHandler(this.button1_Click);
+         // 
          // Form1
          // 
          this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
          this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-         this.ClientSize = new System.Drawing.Size(501, 228);
+         this.ClientSize = new System.Drawing.Size(713, 403);
+         this.Controls.Add(this.button1);
+         this.Controls.Add(this.txtLog);
+         this.Controls.Add(this.lblAddressValid);
          this.Controls.Add(this.label2);
-         this.Controls.Add(this.checkBox1);
+         this.Controls.Add(this.chkCloseToTray);
          this.Controls.Add(this.label1);
          this.Controls.Add(this.txtEthAddress);
          this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -144,8 +183,12 @@
         private System.Windows.Forms.ToolStripMenuItem mnuExit;
         private System.Windows.Forms.TextBox txtEthAddress;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox chkCloseToTray;
         private System.Windows.Forms.Label label2;
-    }
+      private System.Windows.Forms.Timer timerAddress;
+      private System.Windows.Forms.Label lblAddressValid;
+      private System.Windows.Forms.TextBox txtLog;
+      private System.Windows.Forms.Button button1;
+   }
 }
 
