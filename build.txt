@@ -3,8 +3,8 @@ The only thing that works for me is building the windows version on windows, and
 the linux version on linux:
 
 Windows:
-  pkg -t node10-win -o .\release\stratumproxy.exe index.js
+  pkg -t node10-win -o .\release\stratumproxy.exe index.js --options title="Stratum Proxy"
 
 Linux
-  pkg -t node10-linux -o .\release\stratumproxy index.js
+  pkg -t node10-linux -o .\release\stratumproxy index.js --options title="Stratum Proxy"
 
