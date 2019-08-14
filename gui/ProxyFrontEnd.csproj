@@ -7,7 +7,7 @@
     <ProjectGuid>{2563A706-72FC-4FBB-B5BB-268A86035BC2}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>ProxyFrontEnd</RootNamespace>
-    <AssemblyName>ProxyFrontEnd</AssemblyName>
+    <AssemblyName>StratumProxy</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
