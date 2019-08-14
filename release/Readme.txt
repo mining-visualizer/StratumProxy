@@ -6,7 +6,8 @@ mining software does not support this protocol, you can use this proxy
 program to bridge the gap. See the FAQ page at http://mvis.ca/faq.html 
 for general information regarding the Stratum protocol.
 
-INSTRUCTIONS
+
+WINDOWS INSTRUCTIONS
 
 1. Double-click StratumProxy.exe to start the program.  
 2. Enter an ETH address in the text box provided. This 
@@ -16,6 +17,16 @@ INSTRUCTIONS
 3. Once you have done that the proxy should start automatically, and you
    should see some output in the console log.
 4. Start your mining software and point it to http://localhost:8080
+
+
+LINUX INSTRUCTIONS
+
+1. Open up config.ini in your preferred text editor.  The only thing you need to 
+   change is the `EthAddress` setting.  This is the ETH address you will receive 
+   payouts to from the pool.  This address needs to match the ETH address set in 
+   your mining software.
+2. Run the program by typing "./stratumproxy" without the quotes.
+3. Start your mining software and point it to http://localhost:8080
 
 
 MULTIPLE MINERS
@@ -31,14 +42,3 @@ Keep in mind if you do it this way, the mining pool will see all
 miners as one high-hashrate miner, and assign a difficulty according 
 to the cumulative hash rate.
 
-RUN FROM SOURCE
-
-These instructions are for the Node process only, not the C# GUI.
-This procedure should work either under Windows or Linux:
-
-1. Make sure you have Node 10 installed. Node 8 may work as well, 
-but I haven't tested it.
-2. Clone the repo to a folder of your choice.
-3. cd into that folder and type "npm install"
-4. Edit config.ini to input your ETH address.
-5. To run the program, type 'node index.js'
