@@ -1,6 +1,6 @@
 
 
-const VERSION = '1.0.2';
+const VERSION = '1.0.3';
 
 global.logger = logger = require('./lib/log');
 logger.init(process.cwd(), 'log.txt');

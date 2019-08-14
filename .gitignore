@@ -4,6 +4,8 @@ config.ini
 release/*
 !release/Readme.txt
 !release/config.ini
+!release/build.sh
+!release/build.bat
 test/*
 package-lock.json
 gui/misc/*
