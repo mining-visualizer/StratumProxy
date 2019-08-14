@@ -15,7 +15,7 @@ WINDOWS INSTRUCTIONS
    pool. This address needs to match the ETH address set 
    in your mining software.
 3. Once you have done that the proxy should start automatically, and you
-   should see some output in the console log.
+   should see some output in the log window at the bottom.
 4. Start your mining software and point it to http://localhost:8080
 
 
