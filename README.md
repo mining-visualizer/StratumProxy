@@ -6,10 +6,10 @@ If you want to mine at [MVIS Mining Pool](http://mvis.ca) using the Stratum prot
 ### Windows Instuctions
 
 1. Download the zip package from the [Releases](https://github.com/mining-visualizer/StratumProxy/releases) page and extract it to a folder of your choice.
-2. Double-click `StratumProxy.exe` to start the program.  
-2. Enter an ETH address in the text box provided. This is the ETH address you will receive payouts to from the pool. This address needs to match the ETH address set in your mining software.
-3. Once you have done that the proxy should start automatically, and you should see some output in the log window at the bottom.
-4. Start your mining software and point it to `http://localhost:8080`
+1. Double-click `StratumProxy.exe` to start the program.  
+1. Enter an ETH address in the text box provided. This is the ETH address you will receive payouts to from the pool. This address needs to match the ETH address set in your mining software.
+1. Once you have done that the proxy should start automatically, and you should see some output in the log window at the bottom.
+1. Start your mining software and point it to `http://localhost:8080`
 
 ### Linux Instructions
 
