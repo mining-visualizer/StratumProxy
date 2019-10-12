@@ -1,3 +1,11 @@
+@ECHO OFF
+
+echo.
+echo.
+echo Did you remember to change the version number?
+echo.
+echo.
+pause
 
 cd %~dp0
 

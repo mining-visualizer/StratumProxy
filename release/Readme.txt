@@ -32,13 +32,17 @@ LINUX INSTRUCTIONS
 MULTIPLE MINERS
 
 If you have multiple mining rigs, you can either run a separate 
-instance of the proxy program on each mining rig, each one configured 
-with a separate ETH address, or you can point all miners to the same 
-proxy via your local area network. In this case all miners need to 
-be configured with the same ETH address, which needs to match the 
-EthAddress setting in config.ini.
+instance of the proxy program on each mining rig, or you can point 
+all miners to the same proxy via your local area network. 
 
-Keep in mind if you do it this way, the mining pool will see all 
-miners as one high-hashrate miner, and assign a difficulty according 
-to the cumulative hash rate.
+If you use the second option, all miners need to be configured with 
+the same ETH address, which needs to match the EthAddress setting in 
+config.ini.  Another consequence of this option is that the mining 
+pool will see all miners as one high-hashrate miner, and assign a 
+difficulty according to the cumulative hash rate.
+
+If you use the first option, you can choose to run all miners with the 
+same ETH address, or you can use different addresses, it doesn't matter.
+The pool will assign a difficulty level appropriate for each individual
+miner.
 
