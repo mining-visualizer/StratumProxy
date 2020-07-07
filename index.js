@@ -56,7 +56,7 @@ async function init() {
 
    // wait for shares from the miner and send them up to the pool. use the 
    // callback to notify the miner if share was accepted.
-   rpcServer.on('submitShare', async function(args, callback) {
+   rpcServer.on('submitShare', async (args, callback) => {
       var res = await stratumClient.submitShare(args);
       callback(res);
       rejected = res ? rejected : rejected + 1;
@@ -64,12 +64,12 @@ async function init() {
    });
 
    // if we get disconnected from the pool, try to reconnect
-   stratumClient.on('disconnect', function() {
+   stratumClient.on('disconnect', () => {
       rpcServer.removeAllListeners('submitShare');
       LogB('Connection closed. Reconnecting in 5 seconds ...');
       setTimeout(init, 5000);
 
-   }).on('workPackage', function(params) {
+   }).on('workPackage', (params) => {
       // listen for work packages from the stratum pool and make them available to the rpc server
       rpcServer.setWork(params);
    });
