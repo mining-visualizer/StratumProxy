@@ -1,6 +1,6 @@
 
 
-global.VERSION = '1.0.4';
+global.VERSION = '1.0.5';
 
 global.logger = logger = require('./lib/log');
 logger.init(process.cwd(), 'log.txt');
@@ -37,22 +37,18 @@ if (!web3utils.isAddress(config.Miner.EthAddress)) {
    process.exit();
 }
 
-LogB('======== starting stratum proxy ========');
+LogB('======== Stratum Proxy v', VERSION, ' ========');
 LogB('ETH address: ', config.Miner.EthAddress);
 
-var rpcServer = null;
 var shareCount = 1;
 var rejected = 0;
+
+var stratumClient = new StratumClient(config);
+var rpcServer = new RPCServer(config);
 
 init();
 
 async function init() {
-
-   var stratumClient = new StratumClient(config);
-
-   if (!rpcServer) {
-      rpcServer = new RPCServer(config);
-   }
 
    // wait for shares from the miner and send them up to the pool. use the 
    // callback to notify the miner if share was accepted.
@@ -61,13 +57,25 @@ async function init() {
       callback(res);
       rejected = res ? rejected : rejected + 1;
       process.stdout.write('Total shares: ' + shareCount++ + ',  Rejected: ' + rejected + "\r");
+
+   }).on('activeMinerChanged', (activeMiner) => {
+      if (activeMiner) {
+         LogB('Mining activity resumed. Reconnecting to pool.');
+         stratumClient.connectToPool();
+      } else {
+         LogB('Miner has gone inactive. Disconnecting from pool.');
+         stratumClient.disconnect();
+      }
    });
 
-   // if we get disconnected from the pool, try to reconnect
+   // if we get disconnected from the pool and we have an active miner, try to reconnect.
    stratumClient.on('disconnect', () => {
-      rpcServer.removeAllListeners('submitShare');
-      LogB('Connection closed. Reconnecting in 5 seconds ...');
-      setTimeout(init, 5000);
+      if (rpcServer.activeMiner) {
+         LogB('Pool connection was closed. Reconnecting in 5 seconds ...');
+         setTimeout(() => {
+            stratumClient.connectToPool();
+         }, 5000);
+      }
 
    }).on('workPackage', (params) => {
       // listen for work packages from the stratum pool and make them available to the rpc server
