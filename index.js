@@ -1,6 +1,6 @@
 
 
-global.VERSION = '1.0.6';
+global.VERSION = '1.0.7';
 
 global.logger = logger = require('./lib/log');
 logger.init(process.cwd(), 'log.txt');
@@ -80,6 +80,9 @@ async function init() {
    }).on('workPackage', (params) => {
       // listen for work packages from the stratum pool and make them available to the rpc server
       rpcServer.setWork(params);
+
+   }).on('login', (error) => {
+      rpcServer.poolLoginNotify(error);
    });
 
 }
